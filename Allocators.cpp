@@ -36,13 +36,8 @@ void* findAllocator(size_t i_size) {
 
 void * __cdecl malloc(size_t i_size)
 {
-	// replace with calls to your HeapManager or FixedSizeAllocators
-	/*
-	for (unsigned int i = 0; i < sizeof(FSAs) / sizeof(FSAs[0]); i++) {
-		void* ptr = FSAs[i]->alloc();
-		if (ptr != nullptr) return ptr;
-	}
-	*/
+	//HeapManager or FixedSizeAllocators
+	
 	return findAllocator(i_size);
 
 	printf("malloc %zu\n", i_size);
@@ -51,7 +46,7 @@ void * __cdecl malloc(size_t i_size)
 
 void __cdecl free(void * i_ptr)
 {
-	// replace with calls to your HeapManager or FixedSizeAllocators
+	// HeapManager or FixedSizeAllocators
 	for (int i = 0; i < 3; i++) {
 		if (FSAs[i]->free(i_ptr)) return;
 	}
@@ -66,7 +61,7 @@ void __cdecl free(void * i_ptr)
 
 void * operator new(size_t i_size)
 {
-	// replace with calls to your HeapManager or FixedSizeAllocators
+	//HeapManager or FixedSizeAllocators
 
 	printf("new %zu\n", i_size);
 	return findAllocator(i_size);
@@ -75,7 +70,7 @@ void * operator new(size_t i_size)
 
 void operator delete(void * i_ptr)
 {
-	// replace with calls to your HeapManager or FixedSizeAllocators
+	//HeapManager or FixedSizeAllocators
 	printf("delete 0x%" PRIXPTR "\n", reinterpret_cast<uintptr_t>(i_ptr));
 	for (int i = 0; i < 3; i++) {
 		if (FSAs[i]->free(i_ptr)) return;
@@ -90,7 +85,7 @@ void operator delete(void * i_ptr)
 
 void * operator new[](size_t i_size)
 {
-	// replace with calls to your HeapManager or FixedSizeAllocators
+	//calls to HeapManager or FixedSizeAllocators
 	printf("new [] %zu\n", i_size);
 	return findAllocator(i_size);
 	return _aligned_malloc(i_size, 4);
@@ -98,7 +93,7 @@ void * operator new[](size_t i_size)
 
 void operator delete [](void * i_ptr)
 {
-	// replace with calls to your HeapManager or FixedSizeAllocators
+	// calls to HeapManager or FixedSizeAllocators
 	printf("delete [] 0x%" PRIXPTR "\n", reinterpret_cast<uintptr_t>(i_ptr));
 	for (int i = 0; i < 3; i++) {
 		if (FSAs[i]->free(i_ptr)) return;

@@ -91,9 +91,6 @@
 		pBlock->pNextBlock = nullptr;
 		pBlock->pPreviousBlock = nullptr;
 
-		//printf("[Alloc Block] base address: 0x%x, size: 0x%x\n", pBlock->pBaseAddress, pBlock->BlockSize);
-		//printf("     new free base address: 0x%x, size: 0x%x\n", pNewFreeBlock->pBaseAddress, pNewFreeBlock->BlockSize);
-
 		if (outstandingAllocation == nullptr) {
 			outstandingAllocation = pBlock;
 		}

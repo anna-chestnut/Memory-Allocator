@@ -48,7 +48,7 @@ FixedSizeAllocator* CreateFixedSizeAllocator(size_t i_sizeBlock, size_t i_numBlo
 
 bool InitializeMemorySystem(void * i_pHeapMemory, size_t i_sizeHeapMemory, unsigned int i_OptionalNumDescriptors)
 {
-	// create your HeapManager and FixedSizeAllocators
+	// create HeapManager and FixedSizeAllocators
 	pHeapManager = CreateHeapManager(i_pHeapMemory, i_sizeHeapMemory, i_OptionalNumDescriptors);
 	assert(pHeapManager);
 
@@ -68,8 +68,7 @@ void Collect()
 
 void DestroyMemorySystem()
 {
-	// Destroy your HeapManager and FixedSizeAllocators
-
+	// Destroy HeapManager and FixedSizeAllocators
 	pHeapManager->~HeapManager();
 }
 

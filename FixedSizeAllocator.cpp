@@ -24,9 +24,7 @@ FixedSizeAllocator::~FixedSizeAllocator()
     if (m_pAvailableBlocks->AreAllBitsClear())
     {
         printf("Oh no! We have an outstanding allocation\n");
-        // Oh no! We have an outstanding allocation
-        // DEBUG_LOG(...)??
-
+        
     }
 }
 
